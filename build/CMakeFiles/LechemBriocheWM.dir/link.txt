@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/LechemBriocheWM.dir/src/main.cpp.o -o LechemBriocheWM  /usr/lib/libSM.so /usr/lib/libICE.so /usr/lib/libX11.so /usr/lib/libXext.so

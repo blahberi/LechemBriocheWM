@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/blahberi/Projects/LechemBriocheWM/build",
+  "command": "/usr/bin/c++   -std=gnu++11 -o CMakeFiles/LechemBriocheWM.dir/src/main.cpp.o -c /home/blahberi/Projects/LechemBriocheWM/src/main.cpp",
+  "file": "/home/blahberi/Projects/LechemBriocheWM/src/main.cpp",
+  "output": "CMakeFiles/LechemBriocheWM.dir/src/main.cpp.o"
+}
+]

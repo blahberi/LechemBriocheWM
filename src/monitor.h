@@ -1,0 +1,3 @@
+namespace lbwm {
+    class Monitor {};
+}
