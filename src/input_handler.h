@@ -1,6 +1,6 @@
-#ifndef _INPUT_HANDLER
-#define _INPUT_HANDLER
+#ifndef _LBWM_INPUT_HANDLER
+#define _LBWM_INPUT_HANDLER
 namespace lbwm {
     class InputHandler {};
 }
-#endif //_INPUT_HANDLER
+#endif //_LBWM_INPUT_HANDLER

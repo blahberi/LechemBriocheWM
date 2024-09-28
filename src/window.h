@@ -1,8 +1,8 @@
-#ifndef WINDOW_H
-#define WINDOW_H
+#ifndef _LBWM_WINDOW_H
+#define _LBWM_WINDOW_H
 
 namespace lbwm {
     class Window {};
 }
 
-#endif //WINDOW_H
+#endif //_LBWM_WINDOW_H

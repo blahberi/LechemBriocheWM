@@ -1,5 +1,5 @@
-#ifndef _MONITOR_MANAGER
-#define _MONITOR_MANAGER
+#ifndef _LBWM_MONITOR_MANAGER
+#define _LBWM_MONITOR_MANAGER
 #include <list>
 #include "monitor.h"
 namespace lbwm {
@@ -10,4 +10,4 @@ namespace lbwm {
             std::list<Monitor> monitors;
     };
 }
-#endif // _MONITOR_MANAGER
+#endif // _LBWM_MONITOR_MANAGER
