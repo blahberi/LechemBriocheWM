@@ -41,9 +41,9 @@ namespace lbwm {
             static void onConfigureRequest(XEvent* event);
             static void onConfigureNotify(XEvent* event);
             static void onDestroyNotify(XEvent* event);
-            static void onEntryNotify(XEvent* event);
+            static void onEnterNotify(XEvent* event);
             static void onExpose(XEvent* event);
-            static void onFocusRequest(XEvent* event);
+            static void onFocusIn(XEvent* event);
             static void onKeypress(XEvent* event);
             static void onUnmapNotify(XEvent* event);
             static void onMappingNotify(XEvent* event);

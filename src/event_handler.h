@@ -9,10 +9,11 @@ namespace lbwm {
 
     class EventHandler {
         public:
-            EventHandler(EventHandlerFunc *handlers);
+            EventHandler(Display* display, EventHandlerFunc *handlers);
 
             void startEventLoop();
         private:
+            Display* display;
             EventHandlerFunc handlers[LASTEvent];
     };
 }

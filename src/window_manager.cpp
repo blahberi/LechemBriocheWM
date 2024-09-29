@@ -5,7 +5,7 @@
 #include <csignal>
 #include <iostream>
 #include <wait.h>
-using lbwm::WindowManager;
+using namespace lbwm;
 
 WindowManager& WindowManager::getInstance() {
     static WindowManager instance;
@@ -25,7 +25,6 @@ int WindowManager::onXError(Display* display, XErrorEvent* error) {
 }
 
 int WindowManager::onOtherWmRunningError(Display* display, XErrorEvent* error) {
-    WindowManager& instance = getInstance();
     getInstance()._isOtherWmRunning = true;
     return -1;
 }
@@ -61,13 +60,13 @@ bool WindowManager::initialize() {
     this->defaultScreen = DefaultScreen(this->display);
     this->rootWindow = RootWindow(this->display, this->defaultScreen);
 
-
     initEventHandler();
     return true;
 }
 
 void WindowManager::initEventHandler() {
-    long eventMask =
+    XSetWindowAttributes windowAttributes;
+    windowAttributes.event_mask =
         SubstructureRedirectMask|
         SubstructureNotifyMask|
         ButtonPressMask|
@@ -76,12 +75,27 @@ void WindowManager::initEventHandler() {
         LeaveWindowMask|
         StructureNotifyMask|
         PropertyChangeMask;
+    XChangeWindowAttributes(this->display, this->rootWindow, CWEventMask, &windowAttributes);
+    XSelectInput(this->display, this->rootWindow, windowAttributes.event_mask);
 
-    EventHandlerBuilder* eventHandlerBuilder = new EventHandlerBuilder();
-    eventHandlerBuilder
-        ->setEventHandler()
-        ->setEventHandler();
-
+    EventHandlerBuilder* eventHandlerBuilder = (new EventHandlerBuilder())
+        ->setDisplay(this->display)
+        ->setEventHandler(ButtonPress, onButtonPress)
+        ->setEventHandler(ClientMessage, onClientMessage)
+        ->setEventHandler(ConfigureRequest, onConfigureRequest)
+        ->setEventHandler(ConfigureNotify, onConfigureNotify)
+        ->setEventHandler(DestroyNotify, onDestroyNotify)
+        ->setEventHandler(EnterNotify, onEnterNotify)
+        ->setEventHandler(Expose, onExpose)
+        ->setEventHandler(FocusIn, onFocusIn)
+        ->setEventHandler(KeyPress, onKeypress)
+        ->setEventHandler(UnmapNotify, onUnmapNotify)
+        ->setEventHandler(MappingNotify, onMappingNotify)
+        ->setEventHandler(MapRequest, onMapRequest)
+        ->setEventHandler(MotionNotify, onMotionNotify)
+        ->setEventHandler(PropertyNotify, onPropertyNotify);
+    this->eventHandler = eventHandlerBuilder->build();
+    delete eventHandlerBuilder;
 }
 
 void WindowManager::initAtoms() {
